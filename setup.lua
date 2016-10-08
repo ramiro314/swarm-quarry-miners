@@ -1,11 +1,11 @@
 assert(fs.exists("disk"),"Please attach a disk drive to install files to!")
 
 local copyfiles = {
-	"relgo",
-	"config",
-	"miner",
-	"json",
-	"swarm"
+	"relgo.lua",
+	"config.lua",
+	"miner.lua",
+	"json.lua",
+	"swarm.lua"
 }
 
 local blacklist = {
@@ -41,22 +41,22 @@ print("Deploy this turtle as miner? [Y/N]")
 local _,key = os.pullEvent("char")
 if key == "y" then
 	print("Copying files...")
-	fs.copy("disk/relgo","relgo")
-	fs.copy("disk/config","config")
-	fs.copy("disk/miner","miner")
-	fs.copy("disk/json","json")
-	fs.copy("disk/swarm","swarm")
+	fs.copy("disk/relgo.lua","relgo.lua")
+	fs.copy("disk/config.lua","config.lua")
+	fs.copy("disk/miner.lua","miner.lua")
+	fs.copy("disk/json.lua","json.lua")
+	fs.copy("disk/swarm.lua","swarm.lua")
 	fs.copy("disk/.swarmconfig",".swarmconfig")
 	local f = fs.open("startup","w")
-	f.write("shell.run('swarm')")
+	f.write("shell.run('swarm.lua')")
 	f.close()
 	print("Installation complete; starting miner")
-	shell.run("swarm")
+	shell.run("swarm.lua")
 end
 ]]
 
-os.loadAPI(".sq/config")
-os.loadAPI(".sq/json")
+os.loadAPI(".sq/config.lua")
+os.loadAPI(".sq/json.lua")
 if fs.exists("disk/.swarmconfig") then fs.delete("disk/.swarmconfig") end
 config.init("disk/.swarmconfig")
 term.clear()

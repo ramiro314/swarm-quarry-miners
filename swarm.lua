@@ -34,7 +34,7 @@ else
 	error("failed to load api: "..err)
 end
 
-local config, err = loadAPI("config")
+local config, err = loadAPI("config.lua")
 if config then
 	_G.config = config
 	config.init(".swarmconfig")
@@ -42,14 +42,14 @@ else
 	error("failed to load api: "..err)
 end
 
-local miner, err = loadAPI("miner")
+local miner, err = loadAPI("miner.lua")
 if miner then
 	_G.miner = miner
 else
 	error("failed to load api: "..err)
 end
 
-local json, err = loadAPI("json")
+local json, err = loadAPI("json.lua")
 if json then
 	_G.json = json
 else
@@ -225,10 +225,10 @@ if config.get("host") and config.get("dropoff") and config.get("swarmname") then
 			-- uninstall
 			fs.delete(".position")
 			fs.delete(".swarmconfig")
-			fs.delete("miner")
-			fs.delete("json")
+			fs.delete("miner.lua")
+			fs.delete("json.lua")
 			fs.delete("relgo")
-			fs.delete("config")
+			fs.delete("config.lua")
 			fs.delete("startup")
 			fs.delete("swarm")
 			print("Uninstall completed.")
