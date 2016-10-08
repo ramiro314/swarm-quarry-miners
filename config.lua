@@ -2,6 +2,7 @@ local config = {}
 local current_file = nil
 
 function init(file)
+    print("Loading config file "..file)
 	if file then
 		if fs.exists(file) then
 			local f = fs.open(file, "r")
