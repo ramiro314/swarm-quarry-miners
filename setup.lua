@@ -58,7 +58,8 @@ end
 local testa = os.loadAPI(".sq/config.lua")
 local testb = os.loadAPI(".sq/json.lua")
 
-print("Debug config:"..toString(testa).." json:"..toString(testb))
+print(testa)
+print(testb)
 
 if fs.exists("disk/.swarmconfig") then fs.delete("disk/.swarmconfig") end
 config.init("disk/.swarmconfig")
