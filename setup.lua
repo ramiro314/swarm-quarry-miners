@@ -55,11 +55,13 @@ if key == "y" then
 end
 ]]
 
-local testa = os.loadAPI(".sq/config.lua")
-local testb = os.loadAPI(".sq/json.lua")
+os.loadAPI(".sq/config.lua")
+os.loadAPI(".sq/json.lua")
 
-print(testa)
-print(testb)
+for k,v in pairs(_G) do
+  print(k)
+  print(v)
+end
 
 if fs.exists("disk/.swarmconfig") then fs.delete("disk/.swarmconfig") end
 config.init("disk/.swarmconfig")
