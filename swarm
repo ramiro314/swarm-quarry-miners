@@ -171,7 +171,6 @@ if config.get("host") and config.get("dropoff") and config.get("swarmname") then
 					end
 					print("Getting more fuel")
 					go.goto(config.get("dropoff"))
-					miner.tossJunk("down")
 					dropoff()
 					while (turtle.getFuelLevel() <= needed) do
 						turtle.suckUp(64)
@@ -188,7 +187,6 @@ if config.get("host") and config.get("dropoff") and config.get("swarmname") then
 				if freeslots < config.get("freeslots",10) then
 					print("Dropping off items")
 					go.goto(config.get("dropoff"))
-					miner.tossJunk("down")
 					dropoff()
 				end
 				print("Going to shaft location")
@@ -204,7 +202,6 @@ if config.get("host") and config.get("dropoff") and config.get("swarmname") then
 		end
 		if config.get("state", "prep") == "mining" then
 			miner.mineShaft()
-			miner.tossJunk("down")
 			local ok, err = markFinished(config.get("shaft"), config.get("host"), config.get("swarmname"), config.get("authtoken"))
 			if not ok and err == "no response" then
 				while not ok and err == "no response" do
@@ -220,7 +217,6 @@ if config.get("host") and config.get("dropoff") and config.get("swarmname") then
 			-- mining complete, clean up and uninstall
 			print("Quarry complete, dropping off items and uninstalling.")
 			go.goto(config.get("dropoff"))
-			miner.tossJunk("down")
 			dropoff(true)
 			-- uninstall
 			fs.delete(".position")
